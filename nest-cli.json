@@ -1,11 +1,12 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/zypt/src",
+  "sourceRoot": "apps/cms/src",
   "monorepo": true,
-  "root": "apps/zypt",
+  "root": "apps/cms",
   "compilerOptions": {
     "webpack": true,
-    "tsConfigPath": "apps/zypt/tsconfig.app.json"
+    "tsConfigPath": "apps/cms/tsconfig.app.json",
+    "assets": ["i18n/**/*"]
   },
   "projects": {
     "tracker": {
@@ -14,16 +15,17 @@
       "entryFile": "main",
       "sourceRoot": "apps/tracker/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/tracker/tsconfig.app.json"
+        "tsConfigPath": "apps/tracker/tsconfig.app.json",
+        "assets": ["i18n/**/*"]
       }
     },
-    "admin": {
+    "cms": {
       "type": "application",
-      "root": "apps/admin",
+      "root": "apps/cms",
       "entryFile": "main",
-      "sourceRoot": "apps/admin/src",
+      "sourceRoot": "apps/cms/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/admin/tsconfig.app.json"
+        "tsConfigPath": "apps/cms/tsconfig.app.json"
       }
     }
   }

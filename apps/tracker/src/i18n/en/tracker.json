@@ -1,0 +1,10 @@
+{
+  "HELLO_MESSAGE": "Hello {username}",
+  "GOODBYE_MESSAGE": "Goodbye {username}",
+  "USER_ADDED_PRODUCT": "{0.username} added {1.productName} to cart",
+  "SETUP": {
+    "WELCOME": "Welcome {0.username}",
+    "GOODBYE": "Goodbye {0.username}"
+  },
+  "ARRAY": ["ONE", "TWO", "THREE"]
+}
