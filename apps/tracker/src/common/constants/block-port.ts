@@ -2,7 +2,6 @@
  * @see https://www.speedguide.net/port.php or other website
  */
 export const BLACK_PORTS = [
-  24888,
   22, // SSH Port
   53, // DNS queries
   80,

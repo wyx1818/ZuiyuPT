@@ -5,13 +5,10 @@ import { TrackerRequest } from '@tracker/announce/interfaces';
 import { BLACK_PORTS, IPV4_RE, IPV6_RE, REMOVE_IPV4_MAPPED_IPV6_RE } from '@tracker/common/constants';
 import { TrackerException } from '@tracker/common/exceptions';
 import { binaryToHex } from '@tracker/utils';
-import { I18nRequestScopeService } from 'nestjs-i18n';
-import { TrackerErrors } from '@tracker/common/enums/tracker-errors.enum';
+import { TrackerErrors } from '@tracker/common/enums';
 
 @Injectable()
 export class CheckTrackerInterceptor implements NestInterceptor {
-  constructor(private readonly i18n: I18nRequestScopeService) {}
-
   async intercept(context: ExecutionContext, next: CallHandler) {
     const request = context.switchToHttp().getRequest<TrackerRequest>();
 
@@ -42,11 +39,7 @@ export class CheckTrackerInterceptor implements NestInterceptor {
     const isIpv6 = IPV6_RE.test(ip);
 
     if (!isIpv4 && !isIpv6) {
-      throw new TrackerException(
-        await this.i18n.translate('tracker.INVALID_IP'),
-        TrackerErrors.INVALID_IP,
-        CheckTrackerInterceptor.name
-      );
+      throw new TrackerException(TrackerErrors.INVALID_IP);
     }
 
     req.addr = `${isIpv6 ? '[' + ip + ']' : ip}:${req.query.port}`;
@@ -59,11 +52,7 @@ export class CheckTrackerInterceptor implements NestInterceptor {
     const info_hash = unescape(query.info_hash);
 
     if (typeof info_hash !== 'string' || info_hash.length !== 20) {
-      throw new TrackerException(
-        await this.i18n.translate('tracker.INVALID_INFO_HASH'),
-        TrackerErrors.INVALID_INFO_HASH,
-        CheckTrackerInterceptor.name
-      );
+      throw new TrackerException(TrackerErrors.INVALID_INFO_HASH);
     }
 
     query.info_hash = binaryToHex(info_hash);
@@ -75,11 +64,7 @@ export class CheckTrackerInterceptor implements NestInterceptor {
   async setPeerId({ query }: TrackerRequest) {
     const peer_id = unescape(query.peer_id);
     if (typeof peer_id !== 'string' || peer_id.length !== 20) {
-      throw new TrackerException(
-        await this.i18n.translate('tracker.INVALID_PEER_ID'),
-        TrackerErrors.INVALID_PEER_ID,
-        CheckTrackerInterceptor.name
-      );
+      throw new TrackerException(TrackerErrors.INVALID_PEER_ID);
     }
     query.peer_id = binaryToHex(peer_id);
   }
@@ -89,11 +74,10 @@ export class CheckTrackerInterceptor implements NestInterceptor {
    */
   async setPort({ query }: TrackerRequest) {
     query.port = Number(query.port);
-    if (!query.port || query.port > 65535 || query.port < 1 || BLACK_PORTS.includes(query.port))
-      throw new TrackerException(
-        await this.i18n.translate('tracker.INVALID_PORT'),
-        TrackerErrors.INVALID_PORT,
-        CheckTrackerInterceptor.name
-      );
+    if (!query.port || query.port > 65535 || query.port < 1) {
+      throw new TrackerException(TrackerErrors.INVALID_PORT, { port: query.port });
+    } else if (BLACK_PORTS.includes(query.port)) {
+      throw new TrackerException(TrackerErrors.BLACKLIST_PORT, { port: query.port });
+    }
   }
 }

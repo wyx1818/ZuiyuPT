@@ -1,9 +1,11 @@
 {
-  "MISS_FIELD": "请求缺失 BEP3 字段",
+  "MISS_FIELD": "请求参数缺失 BEP3 字段",
   "INVALID_INFO_HASH": "无效的种子哈希",
   "INVALID_PEER_ID": "无效的 peer_id",
   "INVALID_IP": "无效的 IP 地址",
-  "INVALID_PORT": "无效的端口",
+  "INVALID_PORT": "客户端端口({port})非法，必须为数字且在1-65535中",
+  "BLACKLIST_PORT": "客户端端口({port})在黑名单中，请查看站点说明",
   "INVALID_UPLOAD": "上传必须为数字且大于等于0",
-  "INVALID_DOWNLOAD": "下载必须为数字且大于等于0"
+  "INVALID_DOWNLOAD": "下载必须为数字且大于等于0",
+  "INVALID_PASSKEY": "无效的令牌，请尝试重新下载种子"
 }

@@ -1,5 +1,5 @@
-import { registerAs } from '@nestjs/config';
 import * as path from 'path';
+import { registerAs } from '@nestjs/config';
 import { I18nJsonParser } from 'nestjs-i18n';
 
 const trackerConfig = registerAs('tracker', () => ({
@@ -14,14 +14,13 @@ const trackerConfig = registerAs('tracker', () => ({
     useFindAndModify: false,
   },
   i18n: {
-    fallbackLanguage: 'en', // e.g., 'en'
+    fallbackLanguage: 'en',
     fallbacks: {
       'zh-*': 'zh-CN',
       'en-*': 'en',
     },
     parserOptions: {
       path: path.join(__dirname, '/i18n/'),
-      watch: true,
     },
     parser: I18nJsonParser,
   },

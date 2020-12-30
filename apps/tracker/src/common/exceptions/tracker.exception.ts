@@ -1,15 +1,20 @@
-export class TrackerException extends Error {
-  constructor(private readonly response: string, public readonly errorCode: number, public readonly source: string) {
-    super();
-    this.message = `${errorCode}, ${response}`;
-    this.errorCode = errorCode;
-    this.source = source;
+import { TrackerErrors } from '@tracker/common/enums';
 
+type TransArgs = {
+  [k: string]: any;
+};
+
+export class TrackerException extends Error {
+  public errStr: any;
+  constructor(public readonly errCode: number, public readonly transArgs?: TransArgs) {
+    super();
+
+    this.errStr = TrackerErrors[errCode];
     this.logger();
   }
 
   logger() {
-    const logMessage = `${new Date().toLocaleString()} --> ${this.source} 出现错误: ${this.message}`;
-    console.log(logMessage);
+    const logMessage = `${new Date().toLocaleString()} --> ${this.errStr}`;
+    console.log(this.errCode, logMessage);
   }
 }

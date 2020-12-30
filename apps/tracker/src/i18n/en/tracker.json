@@ -1,9 +1,11 @@
 {
-  "MISS_FIELD": "Request miss BEP3 field!",
+  "MISS_FIELD": "Request params miss BEP3 field!",
   "INVALID_INFO_HASH": "Invalid info_hash!",
   "INVALID_PEER_ID": "Invalid peer_id!",
   "INVALID_IP": "Invalid ip address!",
-  "INVALID_PORT": "Invalid client port!",
+  "INVALID_PORT": "Your Bittorrent Client port {port} is illegal, it must be a number and be in 1-65535.",
+  "BLACKLIST_PORT": "Your Bittorrent Client port {port} is in the blacklist, please check the site description.",
   "INVALID_UPLOAD": "Uploaded must be a number greater than or equal to 0!",
-  "INVALID_DOWNLOAD": "Downloaded must be a number greater than or equal to 0!"
+  "INVALID_DOWNLOAD": "Downloaded must be a number greater than or equal to 0!",
+  "INVALID_PASSKEY": "Invalid passkey! Please Re-download the .torrent."
 }
