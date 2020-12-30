@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import tracker from 'config/tracker.config';
-import { AnnounceController } from './announce/announce.controller';
-import { AnnounceService } from './announce/announce.service';
-import { AnnounceModule } from './announce/announce.module';
+import tracker from '@config/tracker.config';
+import { AnnounceController, AnnounceService, AnnounceModule } from '@tracker/announce';
 import { CoreModule } from './core/core.module';
 
 @Module({

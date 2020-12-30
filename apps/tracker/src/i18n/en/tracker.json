@@ -1,10 +1,9 @@
 {
-  "HELLO_MESSAGE": "Hello {username}",
-  "GOODBYE_MESSAGE": "Goodbye {username}",
-  "USER_ADDED_PRODUCT": "{0.username} added {1.productName} to cart",
-  "SETUP": {
-    "WELCOME": "Welcome {0.username}",
-    "GOODBYE": "Goodbye {0.username}"
-  },
-  "ARRAY": ["ONE", "TWO", "THREE"]
+  "MISS_FIELD": "Request miss BEP3 field!",
+  "INVALID_INFO_HASH": "Invalid info_hash!",
+  "INVALID_PEER_ID": "Invalid peer_id!",
+  "INVALID_IP": "Invalid ip address!",
+  "INVALID_PORT": "Invalid client port!",
+  "INVALID_UPLOAD": "Uploaded must be a number greater than or equal to 0!",
+  "INVALID_DOWNLOAD": "Downloaded must be a number greater than or equal to 0!"
 }

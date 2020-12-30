@@ -1,10 +1,9 @@
 {
-  "HELLO_MESSAGE": "Hello {username}",
-  "GOODBYE_MESSAGE": "Goodbye {username}",
-  "USER_ADDED_PRODUCT": "{0.username} added {1.productName} to cart",
-  "SETUP": {
-    "WELCOME": "Welcome {0.username}",
-    "GOODBYE": "Goodbye {0.username}"
-  },
-  "ARRAY": ["ONE", "TWO", "THREE"]
+  "MISS_FIELD": "请求缺失 BEP3 字段",
+  "INVALID_INFO_HASH": "无效的种子哈希",
+  "INVALID_PEER_ID": "无效的 peer_id",
+  "INVALID_IP": "无效的 IP 地址",
+  "INVALID_PORT": "无效的端口",
+  "INVALID_UPLOAD": "上传必须为数字且大于等于0",
+  "INVALID_DOWNLOAD": "下载必须为数字且大于等于0"
 }

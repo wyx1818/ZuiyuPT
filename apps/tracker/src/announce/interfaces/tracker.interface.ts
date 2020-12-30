@@ -35,4 +35,6 @@ export interface TrackerRequest extends OmitRequest {
   query: TrackerQuery;
   /* full ip address */
   addr: string;
+  // user language
+  lang: 'en' | 'zh-CN';
 }

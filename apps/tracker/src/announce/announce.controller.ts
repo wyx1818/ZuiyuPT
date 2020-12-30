@@ -1,12 +1,12 @@
-import { Controller, Get, Query, UseFilters, UsePipes } from '@nestjs/common';
-import { TrackerExceptionFilter } from '../common/filters/tracker-exception.filter';
+import { Controller, Get, Query, UseInterceptors, UsePipes } from '@nestjs/common';
 import { TrackerValidPipe } from '../common/pipes/tracker-valid.pipe';
+import { CheckTrackerInterceptor } from '@tracker/common/interceptors';
 
 @Controller('announce')
 export class AnnounceController {
   @Get()
+  @UseInterceptors(CheckTrackerInterceptor)
   @UsePipes(TrackerValidPipe)
-  @UseFilters(TrackerExceptionFilter)
   getSe(@Query() query) {
     return '2';
   }

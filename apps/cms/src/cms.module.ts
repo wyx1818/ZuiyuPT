@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import cmsConfig, { CmsConfigType } from 'config/cms.config';
+import cmsConfig, { CmsConfigType } from '@config/cms.config';
 
 import { UsersModule } from './users/users.module';
 
@@ -14,8 +14,8 @@ import { UsersModule } from './users/users.module';
     }),
     TypegooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (config: ConfigService) => config.get<CmsConfigType>('cms').db,
       inject: [ConfigService],
+      useFactory: (config: ConfigService) => config.get<CmsConfigType>('cms').db,
     }),
     UsersModule,
   ],

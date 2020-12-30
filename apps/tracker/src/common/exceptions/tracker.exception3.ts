@@ -1,4 +1,4 @@
-export class TrackerException extends Error {
+export class TrackerException3 extends Error {
   constructor(private readonly response: string, public readonly errorCode: number, public readonly source: string) {
     super();
     this.message = `${errorCode}, ${response}`;

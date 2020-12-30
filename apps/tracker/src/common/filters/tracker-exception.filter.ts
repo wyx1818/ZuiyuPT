@@ -1,8 +1,11 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { Response } from 'express';
-import { TrackerException } from '../exceptions/tracker.exception';
+import { TrackerException } from '@tracker/common/exceptions';
 import { trackerFailRes } from '@tracker/utils';
 
+/**
+ * catch tracker exception
+ */
 @Catch(TrackerException)
 export class TrackerExceptionFilter implements ExceptionFilter {
   catch(exception: TrackerException, host: ArgumentsHost): any {
