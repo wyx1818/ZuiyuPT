@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 
-import { CmsConfigType } from 'config/cms.config';
 import { CmsModule } from './cms.module';
+import { CmsConfigType } from 'config/cms.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(CmsModule);

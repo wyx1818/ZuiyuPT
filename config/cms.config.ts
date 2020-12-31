@@ -1,6 +1,6 @@
 import { registerAs } from '@nestjs/config';
 
-const cmsConfig = registerAs('cms', () => ({
+export const cmsConfig = registerAs('cms', () => ({
   port: parseInt(process.env.PT_ADMIN_PORT, 10) || 3101,
   db: {
     uri: process.env.PT_ADMIN_DB || 'mongodb://localhost:27017/cms',
@@ -12,7 +12,5 @@ const cmsConfig = registerAs('cms', () => ({
     useFindAndModify: false,
   },
 }));
-
-export default cmsConfig;
 
 export type CmsConfigType = ReturnType<typeof cmsConfig>;

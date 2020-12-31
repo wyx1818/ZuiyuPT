@@ -1,7 +1,7 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { Response } from 'express';
 import { TrackerException } from '@tracker/common/exceptions';
-import { trackerFailRes } from '@tracker/utils';
+import { trackerFailRes } from '@tracker/announce/services';
 import { I18nService } from 'nestjs-i18n';
 import { TrackerRequest } from '@tracker/announce/interfaces';
 

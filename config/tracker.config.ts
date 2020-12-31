@@ -2,7 +2,7 @@ import * as path from 'path';
 import { registerAs } from '@nestjs/config';
 import { I18nJsonParser } from 'nestjs-i18n';
 
-const trackerConfig = registerAs('tracker', () => ({
+export const trackerConfig = registerAs('tracker', () => ({
   port: parseInt(process.env.PT_TRACKER_PORT, 10) || 3102,
   db: {
     uri: process.env.PT_TRACKER_DB || 'mongodb://localhost:27017/tracker',
@@ -26,7 +26,5 @@ const trackerConfig = registerAs('tracker', () => ({
   },
   fallbackLanguage: 'en',
 }));
-
-export default trackerConfig;
 
 export type TrackerConfigType = ReturnType<typeof trackerConfig>;

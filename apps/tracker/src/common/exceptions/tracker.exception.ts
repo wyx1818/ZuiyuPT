@@ -1,8 +1,15 @@
 import { TrackerErrors } from '@tracker/common/enums';
 
-type TransArgs = {
-  [k: string]: any;
-};
+type TransArgs =
+  | (
+      | {
+          [k: string]: any;
+        }
+      | string
+    )[]
+  | {
+      [k: string]: any;
+    };
 
 export class TrackerException extends Error {
   public errStr: any;
