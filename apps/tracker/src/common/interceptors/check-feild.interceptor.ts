@@ -19,7 +19,6 @@ export class CheckFieldInterceptor implements NestInterceptor {
   }
 
   checkAnnounceFields({ query }: TrackerRequest) {
-    console.log(query);
     /**
      * Check tracker required fields
      */
@@ -39,7 +38,6 @@ export class CheckFieldInterceptor implements NestInterceptor {
     }
 
     for (const field of ['uploaded', 'downloaded', 'left']) {
-      console.log(query[field]);
       const value = Number(query[field]);
       if (Number.isNaN(value) || value < 0) {
         throw new TrackerException(TrackerErrors.INVALID_FIELD_NUMBER, [field]);
@@ -64,7 +62,7 @@ export class CheckFieldInterceptor implements NestInterceptor {
       }
     }
 
-    if (['started', 'stopped', 'completed', 'paused', ''].includes(query.event.toLowerCase())) {
+    if (!['started', 'stopped', 'completed', 'paused', ''].includes(query.event.toLowerCase())) {
       throw new TrackerException(TrackerErrors.INVALID_EVENT, [query.event]);
     }
 
@@ -100,6 +98,7 @@ export class CheckFieldInterceptor implements NestInterceptor {
     // check ip format
     const isIpv4 = IPV4_RE.test(ip);
     const isIpv6 = IPV6_RE.test(ip);
+    // console.log(isIpv4, isIpv6, ip);
 
     if (!isIpv4 && !isIpv6) {
       throw new TrackerException(TrackerErrors.INVALID_IP);
